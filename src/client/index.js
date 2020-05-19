@@ -7,8 +7,7 @@ import './styles/header.scss'
 import './styles/footer.scss'
 import './styles/resets.scss'
 
-console.log(checkForName);
+console.log(checkForURL);
 
 alert("I EXIST")
 console.log("CHANGE!!");
-

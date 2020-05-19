@@ -28,16 +28,31 @@ app.use(bodyParser.json());
 const cors = require('cors');
 app.use(cors());
 
-app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('dist/index.html'))
-})
-
 // designates what port the app will listen to for incoming requests
 app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
 })
 
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
-})
+//Initialize route
+app.get('/', function (req, res) {
+    // res.sendFile('dist/index.html')
+    res.sendFile(path.resolve('dist/index.html'))
+});
+
+app.get('/analysis', function (req, res) {
+    res.send(nlpData)
+});
+
+//Post route
+app.post('/analysis', addData);
+    
+function addData(req, res){
+    textapi.sentiment({
+        text:String;
+        url: String;
+        mode: document;
+    })
+    nlpData.push(req.body);
+    res.send(nlpData);
+    console.log(body);
+}
