@@ -5,6 +5,7 @@ var path = require('path')
 
 const dotenv = require('dotenv');
 dotenv.config();
+
 var aylien = require("aylien_textapi");
 var textapi = new aylien({
     application_id: process.env.API_ID,
@@ -13,13 +14,14 @@ var textapi = new aylien({
 console.log(`Your API key is ${process.env.API_KEY}`);
 
 const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
+
 //Set up instance of an app
 const app = express()
 
 app.use(express.static('dist'))
 
 console.log(__dirname)
+
 //*Middleware
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -36,23 +38,24 @@ app.listen(8080, function () {
 //Initialize route
 app.get('/', function (req, res) {
     // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('dist/index.html'))
+    res.sendFile('dist/index.html')
 });
 
-app.get('/analysis', function (req, res) {
-    res.send(nlpData)
-});
+
 
 //Post route
 app.post('/analysis', addData);
     
 function addData(req, res){
     textapi.sentiment({
-        text:String;
-        url: String;
-        mode: document;
+        mode: document
     })
-    nlpData.push(req.body);
+    newData = {
+        polarity: req.body.polarity,
+        subjectivity: req.body.subjectivity,
+        text: req.body.text
+    }
+    nlpData.push(newData);
     res.send(nlpData);
     console.log(body);
 }
