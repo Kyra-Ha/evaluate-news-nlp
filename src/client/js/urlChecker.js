@@ -1,4 +1,4 @@
-const myURL = 
+
 function checkForURL(inputText) {
     console.log("::: Running checkForURL :::", inputText);
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
@@ -7,7 +7,12 @@ function checkForURL(inputText) {
     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ //port
     '(\\?[;&amp;a-z\\d%_.~+=-]*)?'+ // query string
     '(\\#[-a-z\\d_]*)?$','i');
-    console.log(pattern.test(inputText));
+    if (RegExp.test(inputText)){
+        console.log("valid url");
+    }
+    else{
+        console.log("url not valid");
+    }
 
  }
 

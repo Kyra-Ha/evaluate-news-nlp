@@ -1,12 +1,10 @@
-//Setting up API
-
 
 async function handleSubmit(event) {
     event.preventDefault()
     // check what text was put into the form field
     let formText = document.getElementById('url').value
 
-    Client.checkForUrl(formText)
+    client.checkForUrl(formText)
 
     console.log("::: Form Submitted :::")
     
@@ -21,10 +19,10 @@ async function handleSubmit(event) {
     })
     .then(res => res.json())
     .then(function(res) {
+        console.log(res);
         document.getElementById('results').innerHTML = res.body.polarity;
         document.getElementById('results').innerHTML = res.body.subjectivity;
         document.getElementById('results').innerHTML = res.body.text;
-        console.log(res)
     })
 }
 

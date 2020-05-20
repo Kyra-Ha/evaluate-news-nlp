@@ -48,14 +48,16 @@ app.post('/analysis', addData);
     
 function addData(req, res){
     textapi.sentiment({
-        mode: document
-    })
-    newData = {
-        polarity: req.body.polarity,
-        subjectivity: req.body.subjectivity,
-        text: req.body.text
-    }
-    nlpData.push(newData);
-    res.send(nlpData);
-    console.log(body);
+        text: req.query.input,
+        mode: 'Document'
+    },
+    function(error, response){
+        if (error === null){
+            nlpData.push(response.polarity);
+            nlpData.push(response.subjectivity);
+        }
+        res.send(response)
+    });
 }
+
+

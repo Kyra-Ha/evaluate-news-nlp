@@ -11,7 +11,7 @@ module.exports = {
     mode: 'production',
     output: {
         libraryTarget: "var",
-        library: "Client"
+        library: "client"
     },
     module: {
         rules: [
@@ -40,7 +40,7 @@ module.exports = {
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
         }),
-        new MiniCssExtractPlugin({ filename: "[name].css" }),
+        new MiniCssExtractPlugin({ filename: "[name].scss" }),
         new TerserPlugin({}), 
         new OptimizeCSSAssetsPlugin({})
     ]
