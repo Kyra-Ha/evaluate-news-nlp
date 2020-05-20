@@ -11,3 +11,8 @@ console.log(checkForURL);
 
 alert("I EXIST")
 console.log("CHANGE!!");
+
+export{ 
+    checkForURL, 
+    handleSubmit 
+}

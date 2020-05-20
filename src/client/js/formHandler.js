@@ -6,11 +6,11 @@ async function handleSubmit(event) {
     // check what text was put into the form field
     let formText = document.getElementById('url').value
 
-    checkForUrl(formText)
+    Client.checkForUrl(formText)
 
     console.log("::: Form Submitted :::")
     
-    const res = await fetch('http://localhost:8080/analysis',{
+    const res = await fetch('http://localhost:3000/analysis',{
         method: 'POST', 
         credentials: 'same-origin',
 		headers: {
@@ -21,12 +21,11 @@ async function handleSubmit(event) {
     })
     .then(res => res.json())
     .then(function(res) {
-        document.getElementById('polarity').innerHTML = res.polarity;
-        document.getElementById('subjectivity').innerHTML = res.subjectivity;
-        document.getElementById('text').innerHTML = res.text;
-        
+        document.getElementById('results').innerHTML = res.body.polarity;
+        document.getElementById('results').innerHTML = res.body.subjectivity;
+        document.getElementById('results').innerHTML = res.body.text;
+        console.log(res)
     })
 }
 
 
-export { handleSubmit }
