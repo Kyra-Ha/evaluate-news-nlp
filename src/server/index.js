@@ -1,4 +1,4 @@
-let nlpData = [];
+let nlpData = {};
 
 var path = require('path')
 
@@ -54,7 +54,7 @@ function addData(req, res){
     },
     function(error, response){
         if (error === null){
-            nlpData.push(response);
+            nlpData = response;
             res.send(nlpData);
             console.log(nlpData);
         }
