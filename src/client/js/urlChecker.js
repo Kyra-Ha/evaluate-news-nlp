@@ -7,7 +7,7 @@ function checkForURL(inputText) {
     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ //port
     '(\\?[;&amp;a-z\\d%_.~+=-]*)?'+ // query string
     '(\\#[-a-z\\d_]*)?$','i');
-    if (RegExp.test(inputText)){
+    if (pattern.test(inputText)){
         console.log("valid url");
     }
     else{
@@ -16,4 +16,4 @@ function checkForURL(inputText) {
 
  }
 
-
+export {checkForURL}

@@ -1,5 +1,4 @@
-//Setup empty JS object to act as endpoint for all routes
-nlpData = {};
+let nlpData = [];
 
 var path = require('path')
 
@@ -47,17 +46,19 @@ app.get('/', function (req, res) {
 app.post('/analysis', addData);
     
 function addData(req, res){
+  
+    
     textapi.sentiment({
-        text: req.query.input,
+        url: req.body.url,
         mode: 'Document'
     },
     function(error, response){
         if (error === null){
-            nlpData.push(response.polarity);
-            nlpData.push(response.subjectivity);
+            nlpData.push(response);
+            res.send(nlpData);
+            console.log(nlpData);
         }
-        res.send(response)
+        
     });
 }
-
 

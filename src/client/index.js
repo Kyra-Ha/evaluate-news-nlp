@@ -8,11 +8,12 @@ import './styles/footer.scss'
 import './styles/resets.scss'
 
 console.log(checkForURL);
+console.log(handleSubmit);
 
 alert("I EXIST")
 console.log("CHANGE!!");
 
 export{ 
-    checkForURL, 
-    handleSubmit 
+    handleSubmit,
+    checkForURL 
 }
