@@ -6,7 +6,7 @@ async function handleSubmit(event) {
     client.checkForURL(formText);
     console.log("::: Form Submitted :::");
 
-    fetch('/analysis',{
+    fetch('http://localhost:3000/analysis',{
         method: 'POST', 
         credentials: 'same-origin',
         headers: {
